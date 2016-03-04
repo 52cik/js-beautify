@@ -28,7 +28,7 @@
 <head>
     <!-- if you feel an urge to move this to bootstrap or something, you're most welcome -->
     <meta charset="utf-8">
-    <title>Online JavaScript beautifier</title>
+    <title>JavaScript 美化工具（格式化）</title>
     <link rel="icon" href="web/favicon.png" type="image/png">
     <link rel="stylesheet" href="web/third-party/codemirror/lib/codemirror.css">
 
@@ -312,14 +312,20 @@
 
     <div id="about">
         <p>
-            <a class="self" href="./">Beautify, unpack or deobfuscate JavaScript and HTML, make JSON/JSONP readable, etc.</a>
+            <!--<a class="self" href="./">Beautify, unpack or deobfuscate JavaScript and HTML, make JSON/JSONP readable, etc.</a>-->
+            <a class="self" href="./">美化, 解压 或 解混淆 JavaScript 和 HTML, 或让 JSON/JSONP 便于阅读, 等等.</a>
         </p>
-        <p>
+        <!--<p>
             All of the source code is completely free and open, available on <a href="https://github.com/beautify-web/js-beautify">GitHub</a> under MIT licence,
             <br>and we have a command-line version, python library and a <a href="https://npmjs.org/package/js-beautify">node package</a> as well.
+        </p>-->
         </p>
         <p>
-          <a href="index-cn.html">使用中文版</a>
+            所有的源代码是完全自由和开放的, 使用 <a href="https://github.com/beautify-web/js-beautify">GitHub</a> 的 MIT 许可,
+            <br>我们有一个命令行版本，以及 python 库 和一个 <a href="https://npmjs.org/package/js-beautify">node 模块</a>。
+        </p>
+        <p>
+          <a href="index.html">返回原版</a>
         </p>
     </div>
 
@@ -328,82 +334,117 @@
         <tr>
             <td>
                 <select name="tabsize" id="tabsize">
-                    <option value="1">Indent with a tab character</option>
+                    <!-- <option value="1">Indent with a tab character</option>
                     <option value="2">Indent with 2 spaces</option>
                     <option value="3">Indent with 3 spaces</option>
                     <option value="4">Indent with 4 spaces</option>
-                    <option value="8">Indent with 8 spaces</option>
+                    <option value="8">Indent with 8 spaces</option> -->
+                    <option value="1">缩进 1 TAB</option>
+                    <option value="2">缩进 2 空格</option>
+                    <option value="3">缩进 3 空格</option>
+                    <option value="4">缩进 4 空格</option>
+                    <option value="8">缩进 8 空格</option>
                 </select>
                 <br>
 
                 <select name="max-preserve-newlines" id="max-preserve-newlines">
-                    <option value="-1">Remove all extra newlines</option>
+                    <!-- <option value="-1">Remove all extra newlines</option>
                     <option value="1">Allow 1 newline between tokens</option>
                     <option value="2">Allow 2 newlines between tokens</option>
                     <option value="5">Allow 5 newlines between tokens</option>
                     <option value="10">Allow 10 newlines between tokens</option>
-                    <option value="0">Allow unlimited newlines between tokens</option>
+                    <option value="0">Allow unlimited newlines between tokens</option> -->
+                    <option value="-1">删除所有多余的行</option>
+                    <option value="1">允许 1 空行在语句之间</option>
+                    <option value="2">允许 2 空行在语句之间</option>
+                    <option value="5">允许 5 空行在语句之间</option>
+                    <option value="10">允许 10 空行在语句之间</option>
+                    <option value="0">允许 无限 空行在语句之间</option>
                 </select>
                 <br>
 
                 <select name="wrap-line-length" id="wrap-line-length">
-                    <option value="0">Do not wrap lines</option>
+                    <!-- <option value="0">Do not wrap lines</option>
                     <option value="40">Wrap lines near 40 characters</option>
                     <option value="70">Wrap lines near 70 characters</option>
                     <option value="80">Wrap lines near 80 characters</option>
                     <option value="110">Wrap lines near 110 characters</option>
                     <option value="120">Wrap lines near 120 characters</option>
-                    <option value="160">Wrap lines near 160 characters</option>
+                    <option value="160">Wrap lines near 160 characters</option> -->
+                    <option value="0">不换行</option>
+                    <option value="40">在 40 字符附近换行</option>
+                    <option value="70">在 70 字符附近换行</option>
+                    <option value="80">在 80 字符附近换行</option>
+                    <option value="110">在 110 字符附近换行</option>
+                    <option value="120">在 120 字符附近换行</option>
+                    <option value="160">在 160 字符附近换行</option>
                 </select>
                 <br>
 
                 <select id="brace-style">
-                    <option value="collapse">Braces with control statement</option>
+                    <!-- <option value="collapse">Braces with control statement</option>
                     <option value="collapse-preserve-inline">Braces inline or with control statement</option>
                     <option value="expand">Braces on own line</option>
                     <option value="end-expand">End braces on own line</option>
-                    <option value="none">Attempt to keep braces where they are</option>
+                    <option value="none">Attempt to keep braces where they are</option> -->
+                    <option value="collapse">大括号跟随控制语句</option>
+                    <option value="collapse-preserve-inline">大括号内联或跟随控制语句</option>
+                    <option value="expand">大括号单独一行</option>
+                    <option value="end-expand">闭合大括号单独一行</option>
+                    <option value="none">试图保持原有格式</option>
                 </select>
 
-                <p style="margin:6px 0 0 0">HTML &lt;style&gt;, &lt;script&gt; formatting:</p>
+                <p style="margin:6px 0 0 0">HTML &lt;style&gt;, &lt;script&gt; 格式化设置:</p>
                 <select id="indent-scripts">
-                    <option value="keep">Keep indent level of the tag</option>
+                    <!-- <option value="keep">Keep indent level of the tag</option>
                     <option value="normal">Add one indent level</option>
-                    <option value="separate">Separate indentation</option>
+                    <option value="separate">Separate indentation</option> -->
+                    <option value="keep">保持缩进级别的标记</option>
+                    <option value="normal">添加一个缩进级别</option>
+                    <option value="separate">单独的缩进</option>
                 </select>
 
             </td>
             <td>
                 <input class="checkbox" type="checkbox" id="end-with-newline">
-                <label for="end-with-newline">End script and style with newline?</label>
+                <!-- <label for="end-with-newline">End script and style with newline?</label> -->
+                <label for="end-with-newline">闭合的 script 和 style 标签是否添加新行?</label>
                 <br>
                 <input class="checkbox" type="checkbox" id="e4x">
-                <label for="e4x">Support e4x/jsx syntax</label>
+                <!-- <label for="e4x">Support e4x/jsx syntax</label> -->
+                <label for="e4x">支持 e4x/jsx 语法</label>
                 <br>
                 <input class="checkbox" type="checkbox" id="comma-first">
-                <label for="comma-first">Use comma-first list style?</label>
+                <!-- <label for="comma-first">Use comma-first list style?</label> -->
+                <label for="comma-first">使用 逗号在先 变量声明方式?</label>
                 <br>
                 <input class="checkbox" type="checkbox" id="detect-packers">
-                <label for="detect-packers">Detect packers and obfuscators?</label>
+                <!-- <label for="detect-packers">Detect packers and obfuscators?</label> -->
+                <label for="detect-packers">检查 包装器 和 混淆器? (遇到加密或不确定的情况推荐使用)</label>
                 <br>
                 <input class="checkbox" type="checkbox" id="keep-array-indentation">
-                <label for="keep-array-indentation">Keep array indentation?</label>
+                <!-- <label for="keep-array-indentation">Keep array indentation?</label> -->
+                <label for="keep-array-indentation">保留原有数组缩进?</label>
                 <br>
                 <input class="checkbox" type="checkbox" id="break-chained-methods">
-                <label for="break-chained-methods">Break lines on chained methods?</label>
+                <!-- <label for="break-chained-methods">Break lines on chained methods?</label> -->
+                <label for="break-chained-methods">断行缩进链式调用?</label>
                 <br>
                 <input class="checkbox" type="checkbox" id="space-before-conditional">
-                <label for="space-before-conditional">Space before conditional: "if(x)" / "if (x)"</label>
+                <!-- <label for="space-before-conditional">Space before conditional: "if(x)" / "if (x)"</label> -->
+                <label for="space-before-conditional">条件语句的空格方式: "if(x)" 或 "if (x)"</label>
                 <br>
                 <input class="checkbox" type="checkbox" id="unescape-strings">
-                <label for="unescape-strings">Unescape printable chars encoded as \xNN or \uNNNN?</label>
+                <!-- <label for="unescape-strings">Unescape printable chars encoded as \xNN or \uNNNN?</label> -->
+                <label for="unescape-strings">解码显示 \xNN 或 \uNNNN 字符?</label>
                 <br>
                 <input class="checkbox" type="checkbox" id="jslint-happy">
-                <label for="jslint-happy">Use JSLint-happy formatting tweaks?</label>
+                <!-- <label for="jslint-happy">Use JSLint-happy formatting tweaks?</label> -->
+                <label for="jslint-happy">使用 JSLint-happy 格式化调整?</label>
                 <br>
                 <input class="checkbox" type="checkbox" id="indent-inner-html">
-                <label for="indent-inner-html">Indent &lt;head&gt; and &lt;body&gt; sections?</label>
-                <br><a href="?without-codemirror" class="turn-off-codemirror">Use a simple textarea for code input?</a>
+                <label for="indent-inner-html">缩进 &lt;head&gt; 和 &lt;body&gt; 部分?</label>
+                <br><a href="?without-codemirror" class="turn-off-codemirror">使用文本域作为代码输入?</a>
 
 
             </td>
@@ -411,12 +452,15 @@
     </table>
 
     <div style="line-height: 0">
-        <button class="submit"><strong>Beautify JavaScript or HTML</strong>  <em>(ctrl-enter)</em>
+        <button class="submit"><strong>美化 JavaScript 或 HTML 代码</strong>  <em>(ctrl-enter)</em>
         </button>
         <textarea id="source" rows="30" cols="160"></textarea>
-        <button class="submit"><strong>Beautify JavaScript or HTML</strong>  <em>(ctrl-enter)</em>
+        <button class="submit"><strong>美化 JavaScript 或 HTML 代码</strong>  <em>(ctrl-enter)</em>
         </button>
     </div>
+
+    <h2>下面是插件或其他说明，就不翻译了。</h2>
+    <hr>
 
     <div class="blurb">
         <div style="float:right;">
@@ -511,7 +555,8 @@
             read_settings_from_cookie();
 
             var default_text =
-                "// This is just a sample script. Paste your real code (javascript or HTML) here.\n\nif ('this_is'==/an_example/){of_beautifier();}else{var a=b?(c%d):e[f];}";
+                // "// This is just a sample script. Paste your real code (javascript or HTML) here.\n\nif ('this_is'==/an_example/){of_beautifier();}else{var a=b?(c%d):e[f];}";
+                "// 这只是一个简单的脚本用于演示。请复制你的代码 (javascript 或 HTML) 到这里进行美化.\n\nif ('this_is'==/an_example/){of_beautifier();}else{var a=b?(c%d):e[f];}";
             var textArea = $('#source')[0];
 
             if (the.use_codemirror && typeof CodeMirror !== 'undefined') {
@@ -550,18 +595,6 @@
 
 
         });
-    </script>
-    <script>
-        var _gaq = [
-            ['_setAccount', 'UA-7409939-1'],
-            ['_trackPageview']
-        ];
-        (function (d, t) {
-            var g = d.createElement(t),
-                s = d.getElementsByTagName(t)[0];
-            g.src = '//www.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g, s);
-        }(document, 'script'));
     </script>
 </body>
 
